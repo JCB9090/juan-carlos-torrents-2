@@ -1,0 +1,14 @@
+{
+  "name": "juan-carlos-torrents-2",
+  "version": "1.0.0",
+  "description": "Stream torrents from KAt.cr and others in Stremio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juan Carlos",
+  "license": "MIT",
+  "dependencies": {
+    "multipass-torrent": "^0.4.4"
+  }
+}
