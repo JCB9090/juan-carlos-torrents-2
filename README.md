@@ -13,6 +13,7 @@ node ./node_modules/multipass-torrent/cli/multipass.js --config ./multipass.cfg.
 
 To run stremio with this add-on:
 ```
-/Applications/Stremio.app/Contents/MacOS/Electron . --service=http://localhost:7025
+/Applications/Stremio.app/Contents/MacOS/Electron . --servicesPrio=http://localhost:7025
 # or stremio.exe
+# --servicesPrio to override the upstream one which can be activated by default because it's popular in your area
 ```
