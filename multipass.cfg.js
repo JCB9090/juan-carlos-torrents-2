@@ -22,7 +22,7 @@ module.exports = {
 	processingConcurrency: 8,
 	
 	stremioManifest: {
-		id: "org.juancarlos.torrentstream",
+		id: "org.juancarlos.jct2",
 		name: "Juan Carlos Torrents 2",
 		description: "Streaming torrents collected from KAT.cr and others"
 	},
