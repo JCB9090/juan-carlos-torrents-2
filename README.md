@@ -25,10 +25,10 @@ Stremio add-ons, unlike XBMC or Plex plug-ins, don't run locally. They are calle
 
 Using --services or --servicesPrio arguments to stremio, you can make it load other add-ons, but none of them will be downloaded, instead they will be accessed when stremio requests the catalogue, or streams.
 
-### Torcache fix
+## Torcache fix
 If you're getting a lot of errors from torcache, that's because not all their servers work all the time. Browsers and wget do well with falling back on the next A record, but multipass does not. So, do a wget on a torcache torrent, and add the IP of the successful resolution to /etc/hosts
 
-#### Example:
+#### For Example:
 What we get in multipass
 ```
   { [Error: connect ECONNREFUSED]
