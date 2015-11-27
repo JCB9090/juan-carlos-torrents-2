@@ -53,13 +53,13 @@ module.exports = {
 
 		// Bitsnoop dumps 
 		// see http://bitsnoop.com/info/api.html
-		/*{ 
+		{ 
 			url: "http://ext.bitsnoop.com/export/b3_verified.txt.gz", 
 			// tracker dump is BROKEN; it returns some very crappy torrents as highly seeded
 			//minSeedersUrl: "http://ext.bitsnoop.com/export/b3_e003_torrents.txt.gz", minSeeders: 5,
 			category: ["tv", "movies"], type: "dump", stats: "bitsnoop",
 			interval: 24*HOUR
-		},*/
+		},
 
 		// KAT - dumps TODO
 
