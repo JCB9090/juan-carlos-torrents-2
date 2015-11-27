@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./node_modules/multipass-torrent/cli/multipass.js --config ./multipass.cfg.js"
   },
-  "author": "Juan Carlos",
+  "author": "JCB9090",
   "license": "MIT",
   "dependencies": {
-    "multipass-torrent": "^0.4.4"
+    "multipass-torrent": "^0.5.1"
   }
 }
