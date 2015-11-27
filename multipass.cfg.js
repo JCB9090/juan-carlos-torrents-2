@@ -36,6 +36,7 @@ module.exports = {
 
 		// Torrentz - seeded - this source is important
 		// TODO: make sure if a torrent is hit here, we update seed/leech
+
 		{ url: "https://torrentz.eu/search?q=", interval: 10*MINUTE, important: true, category: CATS },
 		{ url: "https://torrentz.eu/search?f=&p=1", interval: 10*MINUTE, important: true, category: CATS },
 		{ url: "https://torrentz.eu/search?f=&p=2", interval: 10*MINUTE, important: true, category: CATS },
@@ -52,15 +53,15 @@ module.exports = {
 
 		// Bitsnoop dumps 
 		// see http://bitsnoop.com/info/api.html
-		/*
-		{ 
+		/*{ 
 			url: "http://ext.bitsnoop.com/export/b3_verified.txt.gz", 
 			// tracker dump is BROKEN; it returns some very crappy torrents as highly seeded
 			//minSeedersUrl: "http://ext.bitsnoop.com/export/b3_e003_torrents.txt.gz", minSeeders: 5,
 			category: ["tv", "movies"], type: "dump", stats: "bitsnoop",
 			interval: 24*HOUR
-		},
-		*/
+		},*/
+
+		// KAT - dumps TODO
 
 		// KAT - html scraping
 		// Be smart here - maybe scale seeders to age
@@ -69,13 +70,18 @@ module.exports = {
 		// https://kat.cr/movies/{0-200}/?field=seeders&sorder=desc
 		// https://kat.cr/highres-movies/{0-200}/?field=seeders&sorder=desc
 
-		// KAT - dumps
-		/*{ fn: 
-			function(mp, callback) { 
+		// KAT - html scraping
+		{ fn: 
+			function(mp, callback) {
+				for (var i=0; i!=40; i++) {
+					mp.importQueue.push({url: "https://kat.cr/highres-movies/"+i+"/?field=seeders&sorder=desc"}) 
+ 				        mp.importQueue.push({url: "https://kat.cr/movies/"+i+"/?field=seeders&sorder=desc"})
+	
+				}
 				console.log("importing from kickass")
 			},
 			interval: 4*HOUR 
-		}, */
+		},
 		
 		// THESE ARE ALL DOWN
 		// EZTV source 
