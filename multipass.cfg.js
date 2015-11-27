@@ -4,7 +4,7 @@ var HOUR = 60 * MINUTE;
 var CATS = ["tv","movies"];
 
 module.exports = {
-	dbId: "juanCarlos crawls torrents",
+	dbId: "juan crawls torrents",
 
 	dbPath: process.env.HOME+"/juancarlos-multipass",
 
@@ -36,10 +36,10 @@ module.exports = {
 
 		// Torrentz - seeded - this source is important
 		// TODO: make sure if a torrent is hit here, we update seed/leech
-		// TODO: maybe use important flag?
 		{ url: "https://torrentz.eu/search?q=", interval: 10*MINUTE, important: true, category: CATS },
 		{ url: "https://torrentz.eu/search?f=&p=1", interval: 10*MINUTE, important: true, category: CATS },
-		//{ url: "https://torrentz.eu/search?f=&p=2", interval: 10*MINUTE, important: true, category: CATS },
+		{ url: "https://torrentz.eu/search?f=&p=2", interval: 10*MINUTE, important: true, category: CATS },
+		{ url: "https://torrentz.eu/search?f=&p=3", interval: 10*MINUTE, important: true, category: CATS },
 
 		// Torrentz - recent - also important source
 		{ url: "http://torrentz.eu/feed_verified?q=", interval: 5*MINUTE, important: true, stats: "torrentz" },
@@ -49,16 +49,6 @@ module.exports = {
 		{ url: "https://kat.cr/tv/?rss=1", interval: 8*MINUTE, important: true, stats: "katrss" },
 		{ url: "https://kat.cr/highres-movies/?rss=1", interval: 8*MINUTE, important: true, stats: "katrss" },
 
-		// JC dumps
-		{ url: "http://juan-backup.herokuapp.com/top-torrents.csv", important: true },
-
-		// KAT - dumps
-		/*{ fn: 
-			function(mp, callback) { 
-				console.log("importing from kickass")
-			},
-			interval: 4*HOUR 
-		}, */
 
 		// Bitsnoop dumps 
 		// see http://bitsnoop.com/info/api.html
@@ -74,19 +64,26 @@ module.exports = {
 
 		// KAT - html scraping
 		// Be smart here - maybe scale seeders to age
+		// consider more pages
 		// https://kat.cr/tv/{0-250}/?field=seeders&sorder=desc
-		// https://kat.cr/movies/{0-300}/?field=seeders&sorder=desc
-		// https://kat.cr/highres-movies/{0-300}/?field=seeders&sorder=desc
+		// https://kat.cr/movies/{0-200}/?field=seeders&sorder=desc
+		// https://kat.cr/highres-movies/{0-200}/?field=seeders&sorder=desc
 
+		// KAT - dumps
+		/*{ fn: 
+			function(mp, callback) { 
+				console.log("importing from kickass")
+			},
+			interval: 4*HOUR 
+		}, */
+		
 		// THESE ARE ALL DOWN
 		// EZTV source 
 		//{ url: "http://eztvapi.re/", type: "json", stats: "eztv" },
-		//{ url: "http://api.popcorntime.io/", type: "json", stats: "eztv" },
 
 		// We start with YTS because it's a quick way to get some quality torrents - we let the others be first though because it's a very quick way of getting the most demanded stuff
 		// YTS source
 		//{ url: "http://yts.to/tz_daily.txt.gz", important: true, category: true, stats: "yts" }, // category true denotes that category doesn't matter
-		// TODO: backup endpoints
 
 		// think of how to retrieve high volumes of HTML pages without getting blocked
 	]
