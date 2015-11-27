@@ -1,7 +1,9 @@
-JCT
-====
+# JCT2
 
-This repository uses multipass-torrent to collect and index torrents from KAT.cr, torrentz.eu and provide streaming of Movies / TV Shows in Stremio.
+
+### This is a successor to Juan Carlos Torrents. It's not finished yet, but when it is, it's supposed to work better than the original
+
+This project uses multipass-torrent to collect and index torrents from KAT.cr, torrentz.eu and provide streaming of Movies / TV Shows in Stremio.
 
 Please look at the multipass.cfg.js file to see how it works
 
@@ -17,3 +19,4 @@ To run stremio with this add-on:
 # or stremio.exe
 # --servicesPrio to override the upstream one which can be activated by default because it's popular in your area
 ```
+
