@@ -49,17 +49,10 @@ module.exports = {
 		{ url: "https://kat.cr/movies/?rss=1", interval: 8*MINUTE, important: true, stats: "katrss" },
 		{ url: "https://kat.cr/tv/?rss=1", interval: 8*MINUTE, important: true, stats: "katrss" },
 		{ url: "https://kat.cr/highres-movies/?rss=1", interval: 8*MINUTE, important: true, stats: "katrss" },
-
-
-		// Bitsnoop dumps 
-		// see http://bitsnoop.com/info/api.html
-		{ 
-			url: "http://ext.bitsnoop.com/export/b3_verified.txt.gz", 
-			// tracker dump is BROKEN; it returns some very crappy torrents as highly seeded
-			//minSeedersUrl: "http://ext.bitsnoop.com/export/b3_e003_torrents.txt.gz", minSeeders: 5,
-			category: ["tv", "movies"], type: "dump", stats: "bitsnoop",
-			interval: 24*HOUR
-		},
+	
+		// YTS.ag
+		// TODO use custom import logic since we have an imdb_code there, so we don't need to do mapping
+		{ url: "https://yts.ag/api/v2/list_movies.json", type: "generic", stats: "yts.ag" },
 
 		// KAT - dumps TODO
 
@@ -73,16 +66,29 @@ module.exports = {
 		// KAT - html scraping
 		{ fn: 
 			function(mp, callback) {
-				for (var i=0; i!=40; i++) {
-					mp.importQueue.push({url: "https://kat.cr/highres-movies/"+i+"/?field=seeders&sorder=desc"}) 
- 				        mp.importQueue.push({url: "https://kat.cr/movies/"+i+"/?field=seeders&sorder=desc"})
-	
+				// TODO raise 10 to 100 or more
+				for (var i=30; i!=0; i--) {
+					mp.importQueue.unshift({url: "https://kat.cr/highres-movies/"+i+"/?field=seeders&sorder=desc"}) 
+ 				        mp.importQueue.unshift({url: "https://kat.cr/movies/"+i+"/?field=seeders&sorder=desc"})
+                                        mp.importQueue.unshift({url: "https://kat.cr/tv/"+i+"/?field=seeders&sorder=desc"})
 				}
-				console.log("importing from kickass")
+				console.log("-> importing from kickass")
+				callback();
 			},
 			interval: 4*HOUR 
 		},
-		
+
+
+                // Bitsnoop dumps
+                // see http://bitsnoop.com/info/api.html
+                {
+                        url: "http://ext.bitsnoop.com/export/b3_verified.txt.gz",
+                        // tracker dump is BROKEN; it returns some very crappy torrents as highly seeded
+                        minSeedersUrl: "http://ext.bitsnoop.com/export/b3_e003_torrents.txt.gz", minSeeders: 5,
+                        category: ["tv", "movies"], type: "dump", stats: "bitsnoop",
+                        interval: 24*HOUR
+                },
+
 		// THESE ARE ALL DOWN
 		// EZTV source 
 		//{ url: "http://eztvapi.re/", type: "json", stats: "eztv" },
@@ -95,3 +101,8 @@ module.exports = {
 	]
 }
 
+
+process.on('uncaughtException',function(e){ 
+	console.error(e);
+	console.trace();
+})
