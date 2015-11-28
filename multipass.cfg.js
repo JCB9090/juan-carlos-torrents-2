@@ -15,6 +15,15 @@ module.exports = {
 
 	peers: [ /* TODO; maybe put them in a local network, like MongoDB replica sets */ ],
 
+	"trackers": [
+	    'udp://tracker.leechers-paradise.org:6969',
+	    'udp://tracker.pomf.se:80'
+	],
+	"fetchTorrentTrackers": [
+	    'udp://tracker.leechers-paradise.org:6969',
+	    'udp://tracker.pomf.se:80'
+	],
+
 	// can update popularity data from trackers as frequently as 4 hours
 	// keep in mind some sources carry uploaders/downloaders info with them, so every time we hit them, we're going to have popularity filled in
 	popularityTTL: 4*60*60*1000, 
