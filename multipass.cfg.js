@@ -66,8 +66,8 @@ module.exports = {
 		// KAT - html scraping
 		{ fn: 
 			function(mp, callback) {
-				// TODO raise 10 to 100 or more
-				for (var i=30; i!=0; i--) {
+				// TODO raise to 100 or more
+				for (var i=60; i!=0; i--) {
 					mp.importQueue.unshift({url: "https://kat.cr/highres-movies/"+i+"/?field=seeders&sorder=desc"}) 
  				        mp.importQueue.unshift({url: "https://kat.cr/movies/"+i+"/?field=seeders&sorder=desc"})
                                         mp.importQueue.unshift({url: "https://kat.cr/tv/"+i+"/?field=seeders&sorder=desc"})
@@ -88,6 +88,8 @@ module.exports = {
                         category: ["tv", "movies"], type: "dump", stats: "bitsnoop",
                         interval: 24*HOUR
                 },
+
+                // TODO consider adding a URL to a search query for every popoular TV show out there
 
 		// THESE ARE ALL DOWN
 		// EZTV source 
