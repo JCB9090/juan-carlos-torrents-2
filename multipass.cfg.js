@@ -23,7 +23,7 @@ module.exports = {
 	
 	stremioManifest: {
 		id: "org.juancarlos.jct2",
-		name: "Juan Carlos Torrents 2",
+		name: "Juan Torrents 2",
 		description: "Streaming torrents collected from KAT.cr and others"
 	},
 
