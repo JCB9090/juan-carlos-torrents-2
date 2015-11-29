@@ -45,14 +45,15 @@ module.exports = {
 
 		// Torrentz - seeded - this source is important
 		// TODO: make sure if a torrent is hit here, we update seed/leech
-
+	
+		// TODO truly filter the categories; we can't here because it's a generic importer
 		{ url: "https://torrentz.eu/search?q=", interval: 10*MINUTE, important: true, category: CATS },
 		{ url: "https://torrentz.eu/search?f=&p=1", interval: 10*MINUTE, important: true, category: CATS },
 		{ url: "https://torrentz.eu/search?f=&p=2", interval: 10*MINUTE, important: true, category: CATS },
 		{ url: "https://torrentz.eu/search?f=&p=3", interval: 10*MINUTE, important: true, category: CATS },
 
 		// Torrentz - recent - also important source
-		{ url: "http://torrentz.eu/feed_verified?q=", interval: 5*MINUTE, important: true, stats: "torrentz" },
+		{ url: "http://torrentz.eu/feed_verified?q=", interval: 5*MINUTE, important: true, stats: "torrentz", category: CATS },
 
 		// KAT - recent
 		{ url: "https://kat.cr/movies/?rss=1", interval: 8*MINUTE, important: true, stats: "katrss" },
@@ -76,7 +77,7 @@ module.exports = {
 		{ fn: 
 			function(mp, callback) {
 				// TODO raise to 100 or more
-				for (var i=60; i!=0; i--) {
+				for (var i=100; i!=0; i--) {
 					mp.importQueue.unshift({url: "https://kat.cr/highres-movies/"+i+"/?field=seeders&sorder=desc"}) 
  				        mp.importQueue.unshift({url: "https://kat.cr/movies/"+i+"/?field=seeders&sorder=desc"})
                                         mp.importQueue.unshift({url: "https://kat.cr/tv/"+i+"/?field=seeders&sorder=desc"})
