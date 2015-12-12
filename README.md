@@ -3,6 +3,9 @@
 
 ### This is a successor to Juan Carlos Torrents. It's not finished yet, but when it is, it's supposed to work better than the original
 
+### Also, there is a EZTV/YST addon: http://github.com/JCB9090/pct-addon
+
+
 This project uses multipass-torrent to collect and index torrents from KAT.cr, torrentz.eu and provide streaming of Movies / TV Shows in Stremio.
 
 Please look at the multipass.cfg.js file to see how it works
